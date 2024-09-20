@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 :root {
-    --color-dark: #0B0F19;
+    --color-dark: #0B0F19;      /* Gray/900, Heading-dark */
     --color-primary: #6366F1;
-    --color-gray: #9397AD;
+    --color-gray: #9397AD;      /* Gray/600, Muted text*/
     --color-white: #FFFFFF;
+
+    --color-gray-700: #565973;   /* Gray/700, Body text */
+    --color-gray-100: #F3F6FF ;  /* Gray/100, Light BG */
 
     --color-border-gray: #E2E5F1;
 
@@ -104,6 +107,19 @@ a:hover {
     border: 1px solid var(--color-border-gray);
     background-color: var(--color-white);
     color: var(--color-dark);
+}
+
+.btn-quote {
+    height: 44px;
+    width: 44px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 8px;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 
 .btn-toggle-switch {
@@ -254,7 +270,7 @@ footer {
 }
 
 #hero {
-    background: rgb(99,102,241);
+    background: rgb(99, 102, 241);
     background: linear-gradient(0deg, rgba(99,102,241,0.1) 0%, rgba(218,70,239,0.05) 42%, rgba(241,244,253,0.07) 83%);  
     padding-bottom: 2rem;
 
@@ -379,16 +395,92 @@ footer {
         
             @media (min-width: 1400px) {
                 width: auto;
-                bottom: -100px
+                bottom: -100px;
             }
         }
     }
 
 }
 
+#testimonials {
+
+    display: none;  
+
+    background-color: var(--color-gray-100);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    @media (min-width: 1400px) {
+        display: block;   /* Gör ingen skillnad om jag sätter block eller flex/grid här */
+    }   
+
+    .container {
+        /*max-width: 1320px; Behövdes inte när fick ordning på divarna. Oavsett Flexbox eller Grid. */
+        display: flex;
+        /* grid-template-columns: 1fr 1fr 1fr; */ /* Bara för grid, ej flex */
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+    }  
+    
+    .headline {
+        height: 320px;
+        width: 480px;
+        /* padding: var(--container-padding); */
+        h1 {
+            text-align: left;
+            color: var(--color-dark);
+            font-size: 40px;
+            font-weight: 800;
+        }
+    }
+
+    .testimony {
+        background-color: var(--color-white); 
+        border-radius: 10px;
+        height: 320px;
+        width: 480px;
+        padding: var(--container-padding);
+        margin-bottom: 1rem;
+    }
+
+    .rating {
+        margin-top: 2rem;
+    }
+
+    .review {
+        text-align: left;
+        color: var(--color-gray-700);
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 1rem; 
+    }
+
+    .author {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+        /* margin-bottom: 1rem; */
+    }
+
+    .author-name {
+        color: var(--color-dark);
+        font-size: 16px;
+        font-weight: 700; 
+    }
+
+    .author-title {
+        color: var(--color-gray);
+        font-size: 14px;
+        font-weight: 400; 
+    }
+}
+   
+
 @media (min-width: 768px) {
     .container {
-        max-width: 720px;
+        max-width: 712px;
     }
 
     .btn-toggle-switch .label {
