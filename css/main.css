@@ -122,6 +122,38 @@ a:hover {
     text-decoration: none;
 }
 
+.btn-icon {
+    height: 60px;
+    width: 60px;
+    background-color: var(--color-gray-100);
+    /* color: var(--color-white);  */
+    border: 0;
+    border-radius: 8px;
+    /*padding: 10px 10px; */    /* Ej färdigt! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-learn-more {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    width: 160px;
+    height: 44px;
+    border-radius: 8px;
+    padding: 12px 25px;   /* Ej färdigt! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.btn-learn-more:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+    text-decoration: none;
+}
+
 .btn-toggle-switch {
     display: flex;
     align-items: center;
@@ -401,6 +433,86 @@ footer {
     }
 
 }
+
+#details {
+
+    display: none;  
+
+    background-color: var(--color-white); 
+    padding-top: 4rem;      /* ???  */
+    padding-bottom: 4rem;   /* ???  */
+
+    @media (min-width: 1400px) {
+        display: block;   /* Gör ingen skillnad om jag sätter block eller flex/grid här */
+    }   
+
+    .container {
+        /*max-width: 1320px; Behövdes inte när fick ordning på divarna. Oavsett Flexbox eller Grid. */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;     /* ???  */
+    }
+
+    .topdetails {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;     /* ???  */
+    }
+
+    .bottomdetails {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;     /* ???  */
+    }
+
+    .money-transfer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem; 
+
+        ul {
+            list-style-position: inside;
+        }
+        li {
+            margin-bottom: 1rem;
+        }    
+    }
+
+    .receive-money {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem; 
+    }
+
+    .heading-dts {
+        h2 {
+            text-align: left;
+            color: var(--color-dark);   /* Gray/900  */
+            font-size: 32px;
+            font-weight: 800;           /* ExtraBold */
+            /* margin-bottom: 2rem;  */
+        }
+    }
+
+    .details-text {
+        padding-left: 1 rem;
+        text-align: left;
+        color: var(--color-gray-700);   /* Gray/700  */
+        font-size: 16px;
+        font-weight: 400;               /* Regular */   
+    }
+
+   .info-container {
+        display: flex;
+        gap: 1rem;
+   }
+
+   
+}  
 
 #testimonials {
 
