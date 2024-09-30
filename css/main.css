@@ -10,7 +10,10 @@
     --color-gray-800: #33354D;   /* Gray/800, Navigation */
     --color-gray-100: #F3F6FF;  /* Gray/100, Light BG */
 
+
+    --color-text-heading: var(--color-dark);
     --color-border-gray: #E2E5F1;
+    --color-icon-bg: var(--color-gray-100)
 
     --container-padding: 1rem;
     --transition-time: all 0.2;
@@ -29,6 +32,47 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
+}
+
+.space-y-1 > * + * {
+    margin-top: 1rem;
+}
+.space-y-2 > * + * {
+    margin-top: 2rem;
+}
+.space-y-3 > * + * {
+    margin-top: 3rem;
+}
+.space-y-4 > * + * {
+    margin-top: 4rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    color: var(--color-text-heading);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+/* .h1 och -h5: Se lång video om sektion "Features"  */
+.h1 {  
+    font-size: 2.5rem;      /*  40px  */
+    /* Kan lägga in dessa två rader här, men egentligen inte nödvändigt - se ovan - redan deklarerade för alla rubriker, dvs. h1 till h6 */
+    color: var(--color-text-heading);
+    font-weight: 800; 
+}
+.h5 {  
+    font-size: 1.25rem;      /*  20px  */
+    color: var(--color-text-heading);
+    font-weight: 800; 
+}
+/*
+.d4 {
+    font-size: 3.5rem;     56px 
+}   
+*/
+text-lg {                   /* Brödtext */
+    font-size: 1.125rem;    /* 18px */
 }
 
 .wrapper {
@@ -257,8 +301,9 @@ header .container {
     grid-template-columns: 1fr auto auto;
     /* grid-template-areas: "logo switch mobile";  */
     gap: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem;   /* La till när flyttade brands, och kommenterade bort 2 kod-rader nedan */
+    /* padding-top: 1rem;
+    padding-bottom: 1rem;  */
 }
 
 footer {
@@ -281,7 +326,7 @@ footer {
 
 #brands {
     display: none;
-    padding-top: 2rem;
+    padding-top: 4rem;  /* Ändrade från 2rem till 4rem när flyttade brands */
     padding-bottom: 2rem;
 
     .container {
@@ -305,13 +350,17 @@ footer {
 #hero {
     background: rgb(99, 102, 241);
     background: linear-gradient(0deg, rgba(99,102,241,0.1) 0%, rgba(218,70,239,0.05) 42%, rgba(241,244,253,0.07) 83%);  
-    padding-bottom: 2rem;
+    
+    padding-top: 2rem;
+    padding-bottom: 2rem; 
+    padding-left: 1rem;    /* La till när flyttade brands */
+    padding-right: 1rem;   /* La till när flyttade brands */
 
     overflow: hidden;
 
     @media (min-width: 768px) {
         padding-bottom: 0;
-    }
+    }  
 
     .container {
         /*  height: 500px; Blir för kort på höjden. Ta bort denna.  */
@@ -434,6 +483,93 @@ footer {
     }
 
 }
+
+/* FEATURES START */
+.features {
+    text-align: center;
+    padding: 3rem;  /* ? */
+    /*  Skapa --section-spacing  */
+    /* padding-block: var(--section-spacing); */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    .iphone {
+        display: none;
+    }
+
+    .features-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+    .feature-card {
+        display: flex;
+        text-align: start;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .icon-container {
+        background-color: var(--color-gray-100);
+        padding: 1rem;
+        border-radius: 8px;  /* Sätt variabel istället för 8px */
+        /* border-radius: var(--br-lg); */
+        flex-shrink: 0;
+    }
+
+
+    @media (min-width: 768px) {
+        .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 3rem;
+        }
+
+        /* p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        } */
+    }
+
+    @media (min-width: 1400px) {
+        text-align: start;
+        .container {
+            display: flex;
+            gap: 15rem;   /* This solved it (with the features side being too wide compared to the picture) */
+        }
+
+        .features-grid {
+            gap: 4rem 2rem;
+        }
+
+        .iphone {
+            display: block;
+            /* img {  Ställer bara till det - nu blir min bild för liten.
+                width: 100%;
+                height: 100%;
+            }  */  
+            
+            /* .iphone-img {
+                width: 150%;  
+                height: auto;  
+            } */
+          
+        }
+        
+        /* Min bild är inte för liten storlek - detta behövs inte */
+        .text {   
+           /* flex: 1; */
+        } 
+    }
+
+   /* Två brytpunkter, 1200 och 1400, fungerar inte i min design:
+    blir helt fel mellan 1200 - 1400. 
+   @media (min-width: 1400px) {
+        .container {
+            gap: 10rem; 
+        }
+    }  */
+}
+/* FEATURES END */
 
 #slider {
 
@@ -655,29 +791,24 @@ footer {
 #testimonials {
 
     display: none;  
-
     background-color: var(--color-gray-100);
     padding-top: 4rem;
     padding-bottom: 4rem;
 
     @media (min-width: 1400px) {
-        display: block;   /* Gör ingen skillnad om jag sätter block eller flex/grid här */
+        display: block;  
     }   
 
     .container {
-        /*max-width: 1320px; Behövdes inte när fick ordning på divarna. Oavsett Flexbox eller Grid. */
         display: flex;
-        /* grid-template-columns: 1fr 1fr 1fr; */ /* Bara för grid, ej flex */
         justify-content: center;
         align-items: center;
         gap: 2rem;
-
     }  
     
     .headline {
         height: 320px;
         width: 480px;
-        /* padding: var(--container-padding); */
         h1 {
             text-align: left;
             color: var(--color-dark);
