@@ -13,7 +13,7 @@
 
     --color-text-heading: var(--color-dark);
     --color-border-gray: #E2E5F1;
-    --color-icon-bg: var(--color-gray-100)
+    --color-icon-bg: var(--color-gray-100);
 
     --container-padding: 1rem;
     --transition-time: all 0.2;
@@ -61,6 +61,11 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-text-heading);
     font-weight: 800; 
 }
+.h2 {
+    font-size: 32px;      /* 32px   */
+    color: var(--color-text-heading);
+    font-weight: 800;     /* Extra Bold */
+}
 .h5 {  
     font-size: 1.25rem;      /*  20px  */
     color: var(--color-text-heading);
@@ -71,8 +76,20 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 3.5rem;     56px 
 }   
 */
-text-lg {                   /* Brödtext */
+.text-lg {                   /* Brödtext */
     font-size: 1.125rem;    /* 18px */
+}
+
+.text-sm {                   /* Brödtext */
+    font-size: 0.875rem;    /* 14px */
+}
+
+.text-nav {
+    /* Rubrikerna i accordian under FAQ sektionen */
+    color: var(--color-text-heading);
+    font-size: 16;
+    font-weight: 600;  /* Semibold */
+    line-height: 1.3;
 }
 
 .wrapper {
@@ -129,7 +146,6 @@ a:hover {
     text-decoration: none;
 }
 .btn-download-app:hover {
-    /* Kolla upp background-color i Figmafilen */
     background-color: var(--color-primary);
     color: var(--color-white);
     text-decoration: none;
@@ -194,6 +210,25 @@ a:hover {
     text-decoration: none;
 }
 .btn-learn-more:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.btn-contact-us {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    /* width: 163px;  */     /* Ev. ändra eller ta bort */
+    /* height: 50px;   */    /* Ev. ändra eller ta bort */
+    border-radius: 8px;
+    padding: 15px 30px;      /* Sätter storleken på button med padding istället för width och height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    
+}
+.btn-contact-us:hover {
     background-color: var(--color-gray);
     color: var(--color-white);
     text-decoration: none;
@@ -276,12 +311,12 @@ input:checked + .slider:before {
     display: none;
 }
 
-.nav-link{
+.nav-link {
     color: var(--color-dark);  
     font-weight: 600;
     text-decoration: none;
 }
-.nav-link:hover{
+.nav-link:hover {
     color: var(--color-primary);
     text-decoration: underline; 
 }
@@ -556,9 +591,9 @@ footer {
         }
         
         /* Min bild är inte för liten storlek - detta behövs inte */
-        .text {   
-           /* flex: 1; */
-        } 
+        /* .text {   
+            flex: 1; 
+        } */
     }
 
    /* Två brytpunkter, 1200 och 1400, fungerar inte i min design:
@@ -622,7 +657,7 @@ footer {
         margin-bottom: 1rem;
 
         h2 {
-            font-size: 24px;  /* Figna: mobil 22px, tablet 23px, desktop 24px */
+            font-size: 24px;  /* Figma: mobil 22px, tablet 23px, desktop 24px */
         }
 
         .h2-mobile {
@@ -712,9 +747,9 @@ footer {
 
     display: none;  
 
-    background-color: var(--color-white); 
-    padding-top: 4rem;      /* ?  */
-    padding-bottom: 4rem;   /* ?  */
+    background-color: var(--color-white);  /* kan nog tas bort? */
+    padding-top: 4rem;      /*  ?  */
+    padding-bottom: 4rem;   /*  ?  */
 
     @media (min-width: 1400px) {
         display: block;   /* Gör ingen skillnad om jag sätter block eller flex/grid här */
@@ -855,6 +890,261 @@ footer {
         color: var(--color-gray);
         font-size: 14px;
         font-weight: 400; 
+    }
+}
+
+#faq {
+    padding: 1rem;      /* 1rem fixar till sidorna på mobile */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    .container {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        grid-template-areas: "heading-faq" 
+                             "accordion"
+                             "button-for-mobile";
+
+
+        @media (min-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-template-areas: "heading-faq"
+                                 "accordion"
+                                 "contact-container";
+        }
+                    
+        @media (min-width: 1400px) {                        
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto;
+            grid-template-areas: "heading-faq accordion"
+                                 "contact-container accordion"
+                                 ". accordion";
+        }
+    }  
+
+    .heading-faq {
+        grid-area: heading-faq;
+        text-align: center;
+        p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .accordion {
+        grid-area: accordion;
+        display: flex;
+        flex-direction: column;
+
+        border: 1px solid var(--color-border-gray);
+        border-radius: 8px;   /* Sätt rundade hörn på accordion i mobile */
+      
+        @media (min-width : 768px) {
+            border: none;    /* Ta bort accordion border i tablet och desktop */  
+        }     
+        
+        /* gap: 1rem; Tar bort detta - inget avstånd mellan accordion-panels i mobilläge */
+    }
+
+    .accordion-panel {
+        border: 1px solid var(--color-border-gray);
+        padding: 1rem;
+        /* border-radius: 8px;  */
+        display: flex;
+        justify-content: space-between;  /* This fixed it! Nu lägger sig texten till vänster och cirkel button till  höger i panelen */
+        align-items: center;  /* Gör att items ligger på samma nivå horizontally */
+
+        @media (min-width: 768px) {        /* Ej rundade hörn på panelerna i mobilen */
+            border-radius: 8px;
+            box-shadow: 0px 4.4px 12px -1px rgba(13,10,22,0.3); 
+            /* filter: drop-shadow(0px 2px 12px #131022);    Fungerar inte alls  */
+        }
+    }
+
+     /* Ska INTE synas i mobilt läge, men SKA synas i tablet och desktop */
+     #first-panel {
+        display: none;      
+        @media (min-width: 768px) {
+            display: flex; 
+        }   
+    }
+
+    /* SKA synas i mobilt läge, men ska INTE synas i tablet och desktop */
+    #first-panel-open {     
+        .btn-circle-acc {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: 0px 4px 4px 0px rgba(13,10,22,0.25);
+        }     
+        @media (min-width: 768px) {
+            display: none;   
+        }
+    }
+
+    #first-panel-text {
+        flex-direction: column;
+        gap: 1rem;
+        @media (min-width: 768px) {
+            display: none; 
+        }   
+    } 
+
+    /* SKA synas i mobilt läge, men ska INTE synas i tablet och desktop */
+    #third-panel {      
+        @media (min-width: 768px) {
+            display: none; 
+        }   
+    }
+
+    /* Ska inte synas i mobilt läge, men ska synas i tablet och desktop */
+    #third-panel-open {     
+        display: none;      
+        @media (min-width: 768px) {
+            display: grid;  /* placerar "open text" under rubriken (istället för till höger om button) */
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+
+            .btn-circle-acc {
+                background-color: var(--color-primary);
+                color: var(--color-white);
+                box-shadow: 0px 4px 4px 0px rgba(13,10,22,0.25);
+            }
+        }
+    }
+
+    .acc-row {
+        /* padding: 1.5rem;  */
+        display: flex;
+        justify-content: space-between;  
+        align-items: center; 
+    }
+
+    .btn-circle-acc {
+        height: 36px;
+        width: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;  
+        border: 1px solid var(--color-border-gray);
+        background-color: var(--color-gray-100);
+        color: var(--color-dark);
+        flex-shrink: 0;     /* That fixed it in mobile screen. Nu behåller knapparna 
+                            sin runda form även när skärmen blir smalare, och blir inte ovala längre */
+    }
+    .btn-circle-acc i {
+        font-size: 14px;
+    }
+
+    .btn-circle-acc-open {
+        height: 36px;
+        width: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;  
+        border: 1px solid var(--color-border-gray);
+        background-color: var(--color-primary);
+        color: var(--color-dark);
+        flex-shrink: 0;     /* That fixed it in mobile screen. Nu behåller knapparna 
+                            sin runda form även när skärmen blir smalare, och blir inte ovala längre */
+    }
+    .btn-circle-acc-open i {
+        font-size: 14px;
+    }
+
+    .btn-contact {
+        font-size: 14;
+        font-weight: 600;
+    }
+
+    .btn-contact i {
+        margin-left: 1rem;
+    }
+
+    #btn-contact-1 {
+        color: var(--color-primary);  
+    }
+
+    #btn-contact-2 {
+        color: #22C55E;   /* skapa en variabel!!! */
+    }
+
+    .contact-container {  
+        grid-area: contact-container;
+        display: none;  /* Contact info ska INTE synas i Mobile. */
+    }
+
+    .button-for-mobile {
+        grid-area: button-for-mobile;
+        place-self: center;   /*   Center a div in a grid  */
+        font-size: 14px;      /* Från Figma   */
+        font-weight: 600;   /* Semibold, Från Figma */
+        margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+
+        .accordion {
+            gap: 1rem;          /* I Tablet och Desktop ska det vara lite avstånd mellan accordion panels */
+        }
+
+        .accordion-panel {
+            max-width: 750px;   /* I mobile sätts vidden bra automatiskt. I tablet fungerar max-width bäst, 
+                                men blir inte bra med max-width i desktop läge - bredden sprider inte ut sig.
+                                Har därför satt fast width: 750px, se nedan....  */    
+        }
+
+        .contact-container {   /* Contact info SKA synas i Tablet och Desktop (ej i mobile) */
+            display: flex;
+            /* justify-content:space-between;    Kommenterar bort när fixar med grid för desktop  */
+            align-items: center;
+            gap: 1rem;
+            /* margin-top: 2rem;  Kommenterar bort när fixar med grid för desktop  */
+        }
+
+        .contact-box {
+            border: 1px solid var(--color-border-gray);
+            border-radius: 8px;
+            height: auto;       /* Height: auto fungerar bra. Anpassar sig till innehållet. (tidigare fast height: 170px) */
+            min-width: 340px;   /* max-width: 340px fungerar inte i tablet - boxen blir inte bredare än innehållet */
+            padding: 1rem;
+            padding-top: 1.5rem;
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .button-for-mobile{
+            display: none;
+        }
+    }
+
+    @media (min-width: 1400px) {
+
+        .heading-faq {
+            text-align: left;
+            p {
+                text-align: left;
+                width: 350px; 
+            }
+        }
+
+        .accordion-panel {   /* ...fast width: 750px fungerar bäst för Desktop (max-width fungerar inte) */
+            width: 750px;
+        }
+
+        .contact-box {
+            min-width: 0;   /* Måste nollställa min-width (från tablet mq), annars tar inte width: 200 px) */
+            width: 200px;   /* Kolla upp om detta fungerar i Desktop (efter att grid har satts)...???   */
+           
+        }
     }
 }
    
