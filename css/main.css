@@ -339,6 +339,7 @@ input:checked + .slider:before {
     display: none;
 }
 
+/* HEADER START */
 header .container {
     display: grid;
     align-items: center;
@@ -349,7 +350,9 @@ header .container {
     /* padding-top: 1rem;
     padding-bottom: 1rem;  */
 }
+/* HEADER END */
 
+/* FOOTER START */
 footer {
     font-size: 14px;
     padding-top: 1rem;
@@ -369,7 +372,9 @@ footer {
 
     }
 }
+/* FOOTER END */
 
+/* BRANDS START */
 #brands {
     display: none;
     padding-top: 4rem;  /* Ändrade från 2rem till 4rem när flyttade brands */
@@ -392,7 +397,9 @@ footer {
     justify-content: center;
     align-items: center;
 }
+/* BRANDS END */
 
+/* HERO START */
 #hero {
     background: rgb(99, 102, 241);
     background: linear-gradient(0deg, rgba(99,102,241,0.1) 0%, rgba(218,70,239,0.05) 42%, rgba(241,244,253,0.07) 83%);  
@@ -529,6 +536,7 @@ footer {
     }
 
 }
+/* HERO END */
 
 /* FEATURES START */
 .features {
@@ -617,7 +625,8 @@ footer {
 }
 /* FEATURES END */
 
-#slider {
+/* CAROUSEL START */
+#carousel {
 
     background-color: var(--color-gray-100);
     padding-top: 4rem;      /* verkar bra, kolla på slutet  */
@@ -713,47 +722,84 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;     /* Ev. 1rem för tablet. */
+        gap: 1rem;     /* Ev. 1rem för tablet. */
 
         @media (min-width: 1400px) {
             justify-content: space-between;
-            width: 900px;    /* Justera senare */
+            gap: 5rem;
+            /*width: 900px;    /* Justera senare */
         }   
-
     }
 
-    .left-img {
+    .left-img-tablet {
         display: none;
-        width: 60%;
-        height: auto;
-
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1400px){
             display: block;
-            
+            /*img {
+                width: 150%;
+                height: 150%;  
+            }*/   
         }
     }
 
-    .middle-img {
-        background: url("../images/iphone-balance_mobiletablet.svg");
-        
-        /* background-repeat: no-repeat; */
+    .left-img-desktop {
+        display: none;
+        @media (min-width: 1400px){
+            display: block;
+        }
+    }
 
-        @media (min-width: 1400px) {
-            background-image: url("../images/iphone-balance_desktop.svg");
+    .middle-img-mobile {
+        background: url("../images/iphone-balance_mobiletablet.svg");
+        @media (min-width: 768px) {
+            display: none;
         }  
     }
 
-    .right-img {
+    .middle-img-tablet {
         display: none;
-        width: 60%;
-        height: auto;
 
-        @media (min-width: 768px) {
+        /* background: url("../images/iphone-balance_mobiletablet.svg");  */ /* DRAFT NO 1 */
+
+        @media (min-width: 768px) and (max-width: 1400px) {
+            display: block;
+            background: url("../images/iPhone-middle_tablet.png");
+            background-repeat: no-repeat; 
+        }   
+        
+        @media (min-width: 1400px) {
+            /* background-image: url("../images/iPhone-middle_desktop.png"); From draft no 1*/
+            display: none;
+        }  
+    }
+
+    .middle-img-desktop {
+        display: none;
+
+        @media (min-width: 1400px) {
+            display: block;
+        }  
+    }
+
+    .right-img-tablet {
+        display: none;
+        /* width: 60%;
+        height: auto; */
+        @media (min-width: 768px) and (max-width: 1400px) {
             display: block;
         }   
     }
-}
 
+    .right-img-desktop {
+        display: none;
+        @media (min-width: 1400px){
+            display: block;
+        }
+    }
+}
+/* CAROUSEL END */
+
+/* DETAILS START - ONLY FOR DESKTOP */
 #details {
 
     display: none;  
@@ -831,8 +877,10 @@ footer {
         gap: 1rem;
    }
   
-}  
+} 
+/* DETAILS END */ 
 
+/* TESTIMONIALS START - ONLY FOR DESKTOP */
 #testimonials {
 
     display: none;  
@@ -902,7 +950,9 @@ footer {
         font-weight: 400; 
     }
 }
+/* TESTIMONIALS END */
 
+/* FAQ START */
 #faq {
     padding: 1rem;      /* 1rem fixar till sidorna på mobile */
     padding-top: 4rem;
@@ -1159,7 +1209,9 @@ footer {
         }
     }
 }
+/* FAQ END */
 
+/* SUBSCRIBE START */
 #subscribe {
     padding: 1rem;         /* 1rem fixar till sidorna på mobile */
     /* padding-top: 4rem;     /* ??? */
@@ -1278,11 +1330,10 @@ footer {
     .email {
         padding-left: 3rem;   /* orig. 2rem */
     }
-
-
 }
+/* SUBSCRIBE END */
    
-
+/* MEDIA QUERIES FOR *** START */  /* SKA FIXAS!!! */
 @media (min-width: 768px) {
     .container {
         max-width: 712px;  /* Korrigera detta!!! */
@@ -1337,5 +1388,5 @@ footer {
     #brand-5, #brand-6 {
         display: flex;
     }
-
 }
+/* MEDIA QUERIES FOR *** END */  /* SKA FIXAS!!! */
