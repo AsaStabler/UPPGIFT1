@@ -6,8 +6,9 @@
     --color-gray: #9397AD;      /* Gray/600, Muted text*/
     --color-white: #FFFFFF;
 
-    --color-gray-700: #565973;   /* Gray/700, Body text  */
     --color-gray-800: #33354D;   /* Gray/800, Navigation */
+    --color-gray-700: #565973;   /* Gray/700, Body text  */
+    --color-gray-600: #9397AD;   /* Gray/600, Muted text */
     --color-gray-100: #F3F6FF;  /* Gray/100, Light BG */
 
 
@@ -62,7 +63,12 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800; 
 }
 .h2 {
-    font-size: 32px;      /* 32px   */
+    font-size: 2rem;      /* 32px   */
+    color: var(--color-text-heading);
+    font-weight: 800;     /* Extra Bold */
+}
+.h4 {
+    font-size: 1.5rem;      /* 24px   */
     color: var(--color-text-heading);
     font-weight: 800;     /* Extra Bold */
 }
@@ -214,6 +220,9 @@ a:hover {
     color: var(--color-white);
     text-decoration: none;
 }
+.btn-learn-more i {
+    margin-left: 0.5rem;
+}
 
 .btn-contact-us {
     background-color: var(--color-primary);
@@ -344,18 +353,20 @@ header .container {
 footer {
     font-size: 14px;
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     color: var(--color-gray);  /*  To Do: Hämta korrekt text färg från figma filen.  */
 
     .container {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 5px;
-    }
+        gap: 0.25rem;      
 
-    .credit {
-        display: none;
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+
     }
 }
 
@@ -756,7 +767,7 @@ footer {
     }   
 
     .container {
-        /*max-width: 1320px; Behövdes inte när fick ordning på divarna. Oavsett Flexbox eller Grid. */
+        max-width: 1100px; /* Behövdes inte när fick ordning på divarna. Oavsett Flexbox eller Grid. */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -768,14 +779,14 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 5rem;     /* ???  */
+        gap: 7rem;     /* ???  */
     }
 
     .bottomdetails {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 5rem;     /* ???  */
+        gap: 3rem;     /* ???  */
     }
 
     .money-transfer {
@@ -819,8 +830,7 @@ footer {
         display: flex;
         gap: 1rem;
    }
-
-   
+  
 }  
 
 #testimonials {
@@ -896,7 +906,7 @@ footer {
 #faq {
     padding: 1rem;      /* 1rem fixar till sidorna på mobile */
     padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
 
     .container {
         display: grid;
@@ -904,7 +914,7 @@ footer {
         grid-template-columns: 1fr;
         grid-template-areas: "heading-faq" 
                              "accordion"
-                             "button-for-mobile";
+                             "button-group";
 
 
         @media (min-width: 768px) {
@@ -1076,13 +1086,15 @@ footer {
         display: none;  /* Contact info ska INTE synas i Mobile. */
     }
 
-    .button-for-mobile {
-        grid-area: button-for-mobile;
+    .button-group {
+        grid-area: button-group;
         place-self: center;   /*   Center a div in a grid  */
         font-size: 14px;      /* Från Figma   */
         font-weight: 600;   /* Semibold, Från Figma */
         margin-top: 1rem;
     }
+
+
 
     @media (min-width: 768px) {
 
@@ -1121,7 +1133,7 @@ footer {
             }
         }
 
-        .button-for-mobile{
+        .button-group{
             display: none;
         }
     }
@@ -1146,6 +1158,128 @@ footer {
            
         }
     }
+}
+
+#subscribe {
+    padding: 1rem;         /* 1rem fixar till sidorna på mobile */
+    /* padding-top: 4rem;     /* ??? */
+    /* padding-bottom: 4rem;  /* ??? */
+    /* margin-top: 3rem;      /* ??? */
+    margin-bottom: 1rem;   /* ??? */
+    
+
+    .container {
+        background-color: var(--color-gray-100);
+        border-radius: 10px;
+        padding: 2rem;
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            /* justify-content: space-between; */
+        }
+        @media (min-width: 1400px) {
+            /* justify-content: space-between; */
+            /* padding-left: 4rem;
+            padding-right: 4rem; */
+            gap: 8rem;
+        }
+    }
+
+    .h4 {
+        text-wrap: balance;
+        /* font-size: 1.5rem;  */  /* 24px Ska eg. vara 24px enligt Figma. Kolla upp carousel - underrubrik */
+        font-size: 1.25rem;      /* 20px  */
+        color: var(--color-text-heading);
+        font-weight: 800;     /* Extra Bold */
+
+        @media (min-width: 1400px) {
+            font-size: 1.5rem;      /* 24px  */
+        }
+    }
+
+    .notification-group {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .heading-subscribe {
+        max-width: 230px;
+
+        .line-1-desktop { display: none; }
+
+        .line-2 { display: none; }
+
+        @media (min-width: 1400px) {
+            .line-1-mobtablet { display: none ;}
+            .line-1-desktop { display: block; }
+            .line-2 { display: block; }
+            max-width: none;
+        }
+    }
+
+    .subscribe-group {
+        position: relative;
+        display: flex;
+
+        .form-input-email {
+            border-radius: .5em 0 0 .5em;
+        }
+        .btn-subscribe {
+            border-radius: 0 .5em .5em 0;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        
+        top: 50%;
+        left: 1rem;  /* orig. 0.5rem */
+
+        transform: translateY(-50%);   
+        color: var(--color-gray-600);  
+    }
+
+    .form-input-email {
+        border: 1px solid var(--color-border-gray);   /* Figma - kolla upp färg */
+        font-size: 1rem;        /* Figma - kolla upp font-size etc för e-mail input */
+        padding: .3em;
+
+        border-radius: .5em;
+    }
+
+    .btn-subscribe {               
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        padding: 1em 2rem;     /* Sets the size of the button */
+        border: 0;
+        font-size: 1rem;          /* 16 px, stämmer med Figma */
+        font-weight: 500;         /* Bold (Figma säger Semibold, 600, men det ser inte bra ut) */
+
+        border-radius: .5em;  /* orig. .5em */
+    }
+    .btn-subscribe:hover {
+        background-color: var(--color-gray);
+        color: var(--color-white);
+        text-decoration: none;
+    }
+
+    /* Denna klass måste placeras efter .form-input-email annars ger den ej effekt  */
+    .email {
+        padding-left: 3rem;   /* orig. 2rem */
+    }
+
+
 }
    
 
